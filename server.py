@@ -5,7 +5,7 @@ mcp = FastMCP("Marios_MCP", json_response=True)
 
 
 @mcp.tool()
-def add(name: str) -> str:
+def greet(name: str) -> str:
     """Get a personalized greeting"""
     return f"Hello {name}"
 
