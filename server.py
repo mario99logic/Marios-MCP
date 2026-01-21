@@ -36,7 +36,7 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
     for line in response.text.splitlines():
         # Look for markdown links containing "Solutions/" and the challenge name.
         if "Solutions/" in line and f"challenge-{name.lower()}" in line.lower():
-            # Extract the file path from markdown links like [text](path)
+            # Extract the file path from markdown links like [text](path).
             matches = re.findall(r"\(([^)]*Solutions/challenge-[^)]+\.md)\)", line)
             solutions.extend(matches)
 
