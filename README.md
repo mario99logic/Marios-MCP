@@ -11,17 +11,21 @@ MCP (Model Context Protocol) is a standard protocol for AI clients (like agents 
 This server exposes the following tools:
 
 ### `greet`
+
 Returns a personalized greeting.
 
 **Parameters:**
+
 - `name` (string): The name to greet
 
 **Returns:** A greeting string
 
 ### `CodingChallengesSolutionFinder`
+
 Finds solution files for coding challenges from the [CodingChallengesFYI/SharedSolutions](https://github.com/CodingChallengesFYI/SharedSolutions) repository.
 
 **Parameters:**
+
 - `name` (string): The challenge name (e.g., 'redis', 'wc')
 
 **Returns:** A list of solution file paths matching the challenge name
@@ -29,20 +33,23 @@ Finds solution files for coding challenges from the [CodingChallengesFYI/SharedS
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/your-username/Marios-MCP.git
 cd Marios-MCP
 ```
 
 2. Create and activate a virtual environment:
+
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate  # On macOS/Linux
+source .venv/bin/activate  # On macOS/Linux.
 # or
-.venv\Scripts\activate  # On Windows
+.venv\Scripts\activate  # On Windows.
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install mcp requests
 ```
@@ -50,6 +57,7 @@ pip install mcp requests
 ## Usage
 
 Run the server:
+
 ```bash
 python server.py
 ```
