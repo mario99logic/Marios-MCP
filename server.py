@@ -19,7 +19,7 @@ def greet(name: str) -> str:
 
 @mcp.tool()
 def CodingChallengesSolutionFinder(name: str) -> List[str]:
-    """Find solution files for a specific coding challenge by name (e.g., 'redis', 'wc')"""
+    """Find solution files for a specific coding challenge by name (e.g., 'redis', 'wc')."""
     if not name or not name.strip():
         raise ValueError("Challenge name cannot be empty")
 
