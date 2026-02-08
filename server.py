@@ -43,5 +43,10 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
     return solutions
 
 
+@mcp.tool()
+def marioCalculate():
+    print("calculate")
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")
