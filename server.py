@@ -45,7 +45,7 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
 
 @mcp.tool()
 def marioCalculate():
-    print("calculate")
+    print("calculate1")
 
 
 if __name__ == "__main__":
