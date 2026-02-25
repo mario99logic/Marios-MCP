@@ -13,7 +13,7 @@ mcp = FastMCP("Marios_MCP", json_response=True)
 
 @mcp.tool()
 def greet(name: str) -> str:
-    """Get a personalized greeting"""
+    """Get a personalized greeting."""
     return f"Hello {name}"
 
 
