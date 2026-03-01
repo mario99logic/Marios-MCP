@@ -44,6 +44,42 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
 
 
 @mcp.tool()
+def ReadSolution(path: str) -> str:
+    """Fetch and return the full content of a solution file given its relative path (e.g., 'Solutions/challenge-wc/solution.md')."""
+    if not path or not path.strip():
+        raise ValueError("Path cannot be empty")
+
+    url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/{path.lstrip('/')}"
+
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        raise Exception(f"Failed to fetch solution at '{path}': {str(e)}") from e
+
+    return response.text
+
+
+@mcp.tool()
+def ListAllChallenges() -> List[str]:
+    """List the names of all available coding challenges in the SharedSolutions repository."""
+    url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/README.md"
+
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        raise Exception(f"Failed to fetch README.md: {str(e)}") from e
+
+    challenges = set()
+    for line in response.text.splitlines():
+        matches = re.findall(r"challenge-([a-zA-Z0-9_-]+)", line)
+        challenges.update(matches)
+
+    return sorted(challenges)
+
+
+@mcp.tool()
 def marioCalculate():
     print("calculate2")
 
