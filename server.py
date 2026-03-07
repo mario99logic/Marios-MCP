@@ -79,10 +79,5 @@ def ListAllChallenges() -> List[str]:
     return sorted(challenges)
 
 
-@mcp.tool()
-def marioCalculate():
-    print("calculate2")
-
-
 if __name__ == "__main__":
     mcp.run(transport="stdio")
