@@ -41,7 +41,7 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
 def ReadSolution(path: str) -> str:
     """Fetch and return the full content of a solution file given its relative path (e.g., 'Solutions/challenge-wc/solution.md')."""
     if not path or not path.strip():
-        raise ValueError("Path cannot be empty")
+        raise ValueError("Path cannot be empty.")
 
     url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/{path.lstrip('/')}"
 
