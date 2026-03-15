@@ -1,11 +1,15 @@
 import re
 import requests
 from typing import List
+from urllib.parse import urljoin
+
 
 from mcp.server.fastmcp import FastMCP
 
 REPO_NAME = "SharedSolutions"
 REPO_OWNER = "CodingChallengesFYI"
+
+URL = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main"
 
 # Create MCP server.
 mcp = FastMCP("Marios_MCP", json_response=True)
@@ -17,7 +21,7 @@ def CodingChallengesSolutionFinder(name: str) -> List[str]:
     if not name or not name.strip():
         raise ValueError("Challenge name cannot be empty")
 
-    url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/README.md"
+    url = urljoin(URL, "README.md")
 
     try:
         response = requests.get(url, timeout=10)
@@ -57,7 +61,7 @@ def ReadSolution(path: str) -> str:
 @mcp.tool()
 def ListAllChallenges() -> List[str]:
     """List the names of all available coding challenges in the SharedSolutions repository."""
-    url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main/README.md"
+    url = urljoin(URL, "README.md")
 
     try:
         response = requests.get(url, timeout=10)
