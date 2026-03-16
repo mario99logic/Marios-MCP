@@ -8,7 +8,6 @@ from mcp.server.fastmcp import FastMCP
 
 REPO_NAME = "SharedSolutions"
 REPO_OWNER = "CodingChallengesFYI"
-
 URL = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/main"
 
 # Create MCP server.
