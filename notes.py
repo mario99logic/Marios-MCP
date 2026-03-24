@@ -1,7 +1,7 @@
 import json
 import time
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 from mcp.server.fastmcp import FastMCP
 
@@ -74,10 +74,7 @@ def delete_note(key: str) -> str:
 def list_notes() -> List[dict]:
     """List all saved note keys along with their last-updated timestamps."""
     data = _load()
-    return [
-        {"key": k, "updated_at": v["updated_at"]}
-        for k, v in sorted(data.items())
-    ]
+    return [{"key": k, "updated_at": v["updated_at"]} for k, v in sorted(data.items())]
 
 
 @mcp.tool()
@@ -92,11 +89,13 @@ def search_notes(query: str) -> List[dict]:
     for key, entry in data.items():
         if q in key.lower() or q in entry["content"].lower():
             snippet = entry["content"][:200].replace("\n", " ")
-            results.append({
-                "key": key,
-                "snippet": snippet + ("..." if len(entry["content"]) > 200 else ""),
-                "updated_at": entry["updated_at"],
-            })
+            results.append(
+                {
+                    "key": key,
+                    "snippet": snippet + ("..." if len(entry["content"]) > 200 else ""),
+                    "updated_at": entry["updated_at"],
+                }
+            )
     return sorted(results, key=lambda r: r["updated_at"], reverse=True)
 
 
